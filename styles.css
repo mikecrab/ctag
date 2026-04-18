@@ -15,126 +15,90 @@
   --cream-dark:  #E8E2D8;
   --white:       #FFFFFF;
   --charcoal:    #2D2D2D;
-  --gray-600:    #555555;
   --gray-500:    #6B7B8D;
   --gray-300:    #B0BEC5;
   --gray-100:    #F0F2F5;
 
   --font-heading: 'Playfair Display', Georgia, serif;
   --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-
   --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-
+  --radius-md: 12px;
   --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* --- Reset --- */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { font-size: 16px; }
+
 body {
   font-family: var(--font-body);
-  color: var(--charcoal);
   -webkit-font-smoothing: antialiased;
-  overflow: hidden; /* no scroll on desktop */
-  background: var(--navy);
+  background: linear-gradient(170deg, var(--navy) 0%, var(--navy-light) 100%);
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; transition: var(--transition); }
 
 /* ============================================================
-   PAGE LAYOUT — two columns, full viewport
+   CENTERED LAYOUT — single block, both columns aligned
    ============================================================ */
 .page {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 100vh;
-  min-height: 100dvh;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 64px;
+  max-width: 1060px;
+  width: 100%;
+  padding: 40px;
 }
 
-/* --- LEFT COLUMN — dark, info --- */
+/* --- LEFT: Info --- */
 .info-col {
-  background: linear-gradient(170deg, var(--navy) 0%, var(--navy-light) 100%);
-  padding: 40px 48px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 28px;
-  position: relative;
-  overflow: hidden;
+  gap: 24px;
 }
 
-/* Subtle decorative accent */
-.info-col::before {
-  content: '';
-  position: absolute;
-  top: -100px;
-  right: -80px;
-  width: 350px;
-  height: 350px;
-  border: 1px solid rgba(58, 125, 68, 0.07);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.info-col::after {
-  content: '';
-  position: absolute;
-  bottom: -60px;
-  left: -40px;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(200, 150, 78, 0.05) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-/* Brand / Logo */
 .brand-logo {
-  height: 52px;
+  height: 48px;
   width: auto;
   border-radius: 4px;
 }
 
-/* Headline */
 .intro h1 {
   font-family: var(--font-heading);
-  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
   font-weight: 700;
   color: var(--white);
   line-height: 1.2;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
-.intro .accent {
-  color: var(--gold);
-  font-style: italic;
-}
+.accent { color: var(--gold); font-style: italic; }
 
 .tagline {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.55);
   line-height: 1.7;
-  max-width: 460px;
+  max-width: 440px;
 }
 
-/* Bio row */
-.bio {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
+/* Bio */
 .bio-header {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+  margin-bottom: 8px;
 }
 
 .bio-photo {
-  width: 56px;
-  height: 56px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   object-fit: cover;
   object-position: center top;
@@ -144,28 +108,25 @@ a { color: inherit; text-decoration: none; transition: var(--transition); }
 .bio-name {
   display: block;
   font-family: var(--font-heading);
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--white);
 }
 
 .bio-title {
-  font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.76rem;
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .bio-text {
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.45);
   line-height: 1.65;
   max-width: 420px;
 }
 
-.bio-text strong {
-  color: var(--gold);
-  font-weight: 600;
-}
+.bio-text strong { color: var(--gold); font-weight: 600; }
 
-/* Services list — compact inline */
+/* Services */
 .services-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -176,13 +137,13 @@ a { color: inherit; text-decoration: none; transition: var(--transition); }
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 14px;
+  padding: 9px 14px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-sm);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.7);
   transition: var(--transition);
 }
 
@@ -196,7 +157,7 @@ a { color: inherit; text-decoration: none; transition: var(--transition); }
   font-size: 1rem;
   font-weight: 700;
   color: var(--gold);
-  width: 18px;
+  width: 16px;
   flex-shrink: 0;
 }
 
@@ -204,23 +165,17 @@ a { color: inherit; text-decoration: none; transition: var(--transition); }
 .info-footer {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: auto;
-  padding-top: 8px;
+  gap: 8px;
+  padding-top: 4px;
 }
 
 .breakaway-link {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--green-light);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
 }
 
-.breakaway-link:hover {
-  color: var(--white);
-}
+.breakaway-link:hover { color: var(--white); }
 
 .contact-quick {
   display: flex;
@@ -230,62 +185,59 @@ a { color: inherit; text-decoration: none; transition: var(--transition); }
 }
 
 .contact-quick a {
-  font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.76rem;
+  color: rgba(255, 255, 255, 0.35);
 }
 
-.contact-quick a:hover {
-  color: var(--gold);
-}
+.contact-quick a:hover { color: var(--gold); }
 
 .contact-quick .divider {
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.15);
   font-size: 0.7rem;
 }
 
-/* --- RIGHT COLUMN — light, form --- */
+/* --- RIGHT: Form card --- */
 .form-col {
-  background: var(--cream);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
+  width: 380px;
+  flex-shrink: 0;
 }
 
 .form-card {
-  width: 100%;
-  max-width: 440px;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
 }
 
 .form-card h2 {
   font-family: var(--font-heading);
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--navy);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .form-subtitle {
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   color: var(--gray-500);
   line-height: 1.6;
-  margin-bottom: 28px;
+  margin-bottom: 22px;
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
 }
 
 .form-group label {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 500;
   color: var(--navy);
 }
@@ -293,20 +245,18 @@ a { color: inherit; text-decoration: none; transition: var(--transition); }
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 11px 14px;
-  border: 1.5px solid var(--cream-dark);
+  padding: 10px 12px;
+  border: 1.5px solid var(--gray-100);
   border-radius: var(--radius-sm);
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--charcoal);
   background: var(--white);
   transition: var(--transition);
 }
 
 .form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: var(--gray-300);
-}
+.form-group textarea::placeholder { color: var(--gray-300); }
 
 .form-group input:focus,
 .form-group textarea:focus {
@@ -315,30 +265,27 @@ a { color: inherit; text-decoration: none; transition: var(--transition); }
   box-shadow: 0 0 0 3px rgba(58, 125, 68, 0.1);
 }
 
-.form-group textarea {
-  resize: vertical;
-  min-height: 90px;
-}
+.form-group textarea { resize: vertical; min-height: 80px; }
 
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 10px;
 }
 
 .btn-submit {
   width: 100%;
-  padding: 13px;
+  padding: 12px;
   background: var(--gold);
   color: var(--white);
   border: none;
   border-radius: var(--radius-sm);
   font-family: var(--font-body);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .btn-submit:hover {
@@ -349,165 +296,64 @@ a { color: inherit; text-decoration: none; transition: var(--transition); }
 
 .form-note {
   text-align: center;
-  font-size: 0.73rem;
+  font-size: 0.72rem;
   color: var(--gray-500);
   margin-top: 2px;
 }
 
-/* Success state */
-.form-success {
-  display: none;
-  text-align: center;
-  padding: 48px 16px;
-}
-
+/* Success */
+.form-success { display: none; text-align: center; padding: 40px 16px; }
 .form-success.show { display: block; }
-
-.form-success svg {
-  width: 48px;
-  height: 48px;
-  color: var(--green);
-  margin-bottom: 14px;
-}
-
+.form-success svg { width: 44px; height: 44px; color: var(--green); margin-bottom: 12px; }
 .form-success h3 {
   font-family: var(--font-heading);
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: var(--navy);
   margin-bottom: 6px;
 }
-
-.form-success p {
-  color: var(--gray-500);
-  font-size: 0.9rem;
-}
+.form-success p { color: var(--gray-500); font-size: 0.88rem; }
 
 /* ============================================================
-   RESPONSIVE — stacks on mobile/tablet, scrolls naturally
+   RESPONSIVE — stacks and scrolls on smaller screens
    ============================================================ */
 @media (max-width: 900px) {
   body {
-    overflow: auto; /* allow scrolling on mobile */
+    overflow: auto;
+    align-items: flex-start;
   }
 
   .page {
     grid-template-columns: 1fr;
-    min-height: auto;
-  }
-
-  .info-col {
+    gap: 36px;
     padding: 36px 24px;
-    gap: 24px;
+    max-width: 500px;
   }
 
-  .intro h1 {
-    font-size: 1.8rem;
-  }
-
-  .services-list {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .form-col {
-    padding: 36px 24px;
-  }
-
-  .form-card {
-    max-width: 100%;
-  }
+  .form-col { width: 100%; }
 }
 
 @media (max-width: 500px) {
-  .info-col {
-    padding: 28px 20px;
-    gap: 20px;
-  }
-
-  .intro h1 {
-    font-size: 1.5rem;
-  }
-
-  .services-list {
-    grid-template-columns: 1fr;
-  }
-
-  .form-col {
-    padding: 28px 20px;
-  }
-
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-quick {
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .contact-quick .divider {
-    display: none;
-  }
+  .page { padding: 28px 20px; }
+  .intro h1 { font-size: 1.5rem; }
+  .services-list { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .form-card { padding: 24px 20px; }
+  .contact-quick { flex-direction: column; gap: 4px; }
+  .contact-quick .divider { display: none; }
 }
 
-/* ============================================================
-   TALL DESKTOPS — if viewport is very tall, content still
-   centers nicely without awkward stretching
-   ============================================================ */
-@media (min-width: 901px) and (min-height: 900px) {
-  .info-col {
-    gap: 32px;
-  }
-}
-
-/* Short desktops — tighten everything */
+/* Short desktops */
 @media (min-width: 901px) and (max-height: 700px) {
-  .info-col {
-    padding: 24px 36px;
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 1.5rem;
-    margin-bottom: 6px;
-  }
-
-  .tagline {
-    font-size: 0.82rem;
-  }
-
-  .bio-photo {
-    width: 44px;
-    height: 44px;
-  }
-
-  .bio-text {
-    font-size: 0.78rem;
-  }
-
-  .service-item {
-    padding: 7px 12px;
-    font-size: 0.78rem;
-  }
-
-  .form-col {
-    padding: 24px;
-  }
-
-  .form-card h2 {
-    font-size: 1.4rem;
-  }
-
-  .form-group input,
-  .form-group textarea {
-    padding: 9px 12px;
-    font-size: 0.85rem;
-  }
-
-  .form-group textarea {
-    min-height: 70px;
-  }
-
-  .btn-submit {
-    padding: 10px;
-  }
+  .info-col { gap: 16px; }
+  .intro h1 { font-size: 1.4rem; margin-bottom: 6px; }
+  .tagline { font-size: 0.82rem; }
+  .bio-photo { width: 40px; height: 40px; }
+  .bio-text { font-size: 0.78rem; }
+  .service-item { padding: 6px 12px; font-size: 0.76rem; }
+  .form-card { padding: 24px; }
+  .form-card h2 { font-size: 1.3rem; }
+  .form-group input, .form-group textarea { padding: 8px 10px; font-size: 0.84rem; }
+  .form-group textarea { min-height: 60px; }
+  .btn-submit { padding: 10px; }
+  .page { gap: 48px; padding: 24px 40px; }
 }
