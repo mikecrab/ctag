@@ -214,6 +214,27 @@ a { color: inherit; text-decoration: none; transition: var(--transition); }
   color: var(--gold);
 }
 
+.breakaway-badge {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.breakaway-logo {
+  width: 100px;
+  height: auto;
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: var(--transition);
+}
+
+.breakaway-logo:hover {
+  opacity: 0.8;
+}
+
 /* --- RIGHT: Form card --- */
 .form-col {
   width: 380px;
