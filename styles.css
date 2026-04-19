@@ -32,7 +32,7 @@ html { font-size: 16px; }
 body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
-  background: linear-gradient(170deg, var(--navy) 0%, var(--navy-light) 100%);
+  background: var(--navy);
   min-height: 100vh;
   min-height: 100dvh;
   overflow: hidden;
