@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valuation Bridge Calculator | Crabtree Transaction Advisory Group</title>
+  <meta name="robots" content="noindex, nofollow"> <!-- Keep it hidden -->
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+
+  <!-- Top Nav -->
+  <header class="calc-header">
+    <a href="index.html" class="back-link">← Back</a>
+    <img src="logo.png" alt="Crabtree Transaction Advisory Group" class="calc-logo">
+    <h1 class="calc-title">Valuation Bridge Simulator</h1>
+  </header>
+
+  <main class="dashboard">
+
+    <!-- Column 1: Current State -->
+    <section class="panel input-panel">
+      <h2>1. Your Business As-Is</h2>
+      <p class="panel-desc">Enter your current financial metrics.</p>
+
+      <div class="control-group">
+        <label for="rev-input">Annual Revenue</label>
+        <div class="input-wrapper">
+          <span class="prefix">$</span>
+          <input type="text" id="rev-input" value="5,000,000">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label for="margin-slider">EBITDA Margin: <span id="margin-val" class="val-highlight">15%</span></label>
+        <input type="range" id="margin-slider" min="1" max="50" value="15" step="1">
+        <div class="calc-subtext">Estimated EBITDA: <strong id="ebitda-display">$750,000</strong></div>
+      </div>
+
+      <div class="control-group">
+        <label for="multiple-slider">Industry Multiple: <span id="multiple-val" class="val-highlight">4.0x</span></label>
+        <input type="range" id="multiple-slider" min="1" max="15" value="4.0" step="0.5">
+      </div>
+      
+      <div class="summary-box">
+        <span>Current Valuation</span>
+        <h3 id="current-val-display">$3,000,000</h3>
+      </div>
+    </section>
+
+    <!-- Column 2: The Accelerators -->
+    <section class="panel input-panel accent-panel">
+      <h2>2. The Advisory Impact</h2>
+      <p class="panel-desc">See the compounding effect of professional transaction advisory.</p>
+
+      <div class="control-group">
+        <label for="efficiency-slider">Fractional Controller Impact</label>
+        <div class="slider-desc">Optimize costs, tighten operations, and expand margins.</div>
+        <div class="slider-header">
+          <span>Margin Boost:</span>
+          <span id="efficiency-val" class="val-highlight gold">+3.0%</span>
+        </div>
+        <input type="range" id="efficiency-slider" min="0" max="15" value="3.0" step="0.5">
+        <div class="calc-subtext">New EBITDA: <strong id="new-ebitda-display">$900,000</strong></div>
+      </div>
+
+      <div class="control-group">
+        <label for="risk-slider">Exit Planning & Repositioning</label>
+        <div class="slider-desc">Clean financials and strategic preparation reduce buyer risk and increase multiples.</div>
+        <div class="slider-header">
+          <span>Multiple Boost:</span>
+          <span id="risk-val" class="val-highlight gold">+1.5x</span>
+        </div>
+        <input type="range" id="risk-slider" min="0" max="5" value="1.5" step="0.5">
+        <div class="calc-subtext">New Multiple: <strong id="new-multiple-display">5.5x</strong></div>
+      </div>
+    </section>
+
+    <!-- Column 3: The Viz (Bridge) -->
+    <section class="panel chart-panel">
+      <h2>3. The Value Bridge</h2>
+      
+      <div class="chart-container">
+        
+        <div class="bar-col">
+          <div class="bar-label" id="chart-val-current">$3.0M</div>
+          <div class="bar-track">
+            <div class="bar current-bar" id="bar-current"></div>
+          </div>
+          <div class="bar-title">As-Is Value</div>
+        </div>
+
+        <div class="bar-col">
+          <div class="bar-label gold" id="chart-val-added">+$1.95M</div>
+          <div class="bar-track gap-track">
+            <!-- This bar floats to show the gap -->
+            <div class="bar added-bar" id="bar-added"></div>
+          </div>
+          <div class="bar-title">Value Created</div>
+        </div>
+
+        <div class="bar-col">
+          <div class="bar-label success" id="chart-val-future">$4.95M</div>
+          <div class="bar-track">
+            <div class="bar future-bar" id="bar-future"></div>
+          </div>
+          <div class="bar-title">Exit Value</div>
+        </div>
+
+      </div>
+
+      <div class="lead-action">
+        <button id="open-lead-btn" class="btn-primary">Get Your Detailed Valuation Report</button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Lead Capture Modal -->
+  <div id="lead-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button id="close-modal" class="close-btn">×</button>
+      <h2>Send My Report</h2>
+      <p>We'll send you a detailed breakdown of your Valuation Bridge and how we can help you achieve these numbers.</p>
+      
+      <form class="lead-form" action="https://formspree.io/f/mgorybpo" method="POST">
+        <!-- Hidden fields for calculator data -->
+        <input type="hidden" name="Subject" value="New Valuation Calculator Lead">
+        <input type="hidden" id="hidden-curr-val" name="Current_Valuation" value="">
+        <input type="hidden" id="hidden-added-val" name="Value_Created" value="">
+        <input type="hidden" id="hidden-future-val" name="Future_Valuation" value="">
+
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="name" required>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" required>
+        </div>
+        <button type="submit" class="btn-primary">Send Report</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="calculator.js"></script>
+</body>
+</html>
