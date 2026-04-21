@@ -35,10 +35,10 @@ body {
   background: var(--navy);
   min-height: 100vh;
   min-height: 100dvh;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
 }
 
 img { max-width: 100%; height: auto; display: block; }
@@ -55,6 +55,7 @@ a { color: inherit; text-decoration: none; transition: var(--transition); }
   max-width: 1060px;
   width: 100%;
   padding: 40px;
+  margin: auto;
 }
 
 /* --- LEFT: Info --- */
