@@ -71,19 +71,29 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 2. Mobile: Tap logo 5 times quickly
-  const logo = document.querySelector('.brand-logo');
+  // Attached to the Breakaway logo link, preventing default to avoid opening 5 tabs
+  const logoLink = document.querySelector('.breakaway-badge a');
   let tapCount = 0;
   let tapTimer;
 
-  if (logo) {
-    logo.addEventListener('click', () => {
+  if (logoLink) {
+    logoLink.addEventListener('click', (e) => {
+      e.preventDefault();
       tapCount++;
       clearTimeout(tapTimer);
+      
       if (tapCount >= 5) {
         showSecret();
         tapCount = 0;
+      } else {
+        // If they stop tapping, check if it was just a single normal click
+        tapTimer = setTimeout(() => { 
+          if (tapCount === 1) {
+            window.open(logoLink.href, '_blank', 'noopener');
+          }
+          tapCount = 0; 
+        }, 350); // wait 350ms for subsequent taps
       }
-      tapTimer = setTimeout(() => { tapCount = 0; }, 800);
     });
   }
 

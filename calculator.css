@@ -1,23 +1,30 @@
 /* ============================================================
    CTAG — Valuation Calculator Dashboard
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karma:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&family=Rubik:wght@400;500;600;700&display=swap');
 
 :root {
-  --navy:        #10243A;
-  --navy-light:  #193755;
-  --green:       #3A7D44;
-  --green-light: #4A9D56;
-  --gold:        #C8964E;
-  --gold-light:  #D4A85A;
+  --navy-brand:  #354A5F;
+  --midnight:    #1A1E2B;
+  --teal:        #317675;
+  --coral:       #F37D67;
+  --orange:      #F48F33;
+  --yellow:      #FDCC64;
+
+  --navy:        var(--midnight);
+  --navy-light:  var(--navy-brand);
+  --green:       var(--teal);
+  --green-light: var(--teal);
+  --gold:        var(--orange);
+  --gold-light:  var(--yellow);
   --white:       #FFFFFF;
   --charcoal:    #2D2D2D;
   --error:       #E57373;
   --panel-bg:    rgba(255,255,255,0.03);
   --panel-border: rgba(255,255,255,0.08);
 
-  --font-heading: 'Playfair Display', serif;
-  --font-body:    'Inter', sans-serif;
+  --font-heading: 'Rubik', serif;
+  --font-body:    'Open Sans', sans-serif;
   --transition: all 0.3s ease-out;
 }
 
@@ -89,7 +96,7 @@ select.text-input option { background: var(--navy); color: white; }
 
 /* Buttons */
 .btn-primary { background: var(--gold); color: white; border: none; padding: 14px 24px; font-size: 1rem; font-family: var(--font-body); font-weight: 600; border-radius: 6px; cursor: pointer; transition: var(--transition); width: 100%; margin-top: 10px; }
-.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(200,150,78,0.3); }
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(244,143,51,0.3); }
 .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
 
 /* State Placeholder */
@@ -104,7 +111,7 @@ select.text-input option { background: var(--navy); color: white; }
 
 /* AI Results */
 .results-container { display: flex; flex-direction: column; height: 100%; }
-.insights-box { background: rgba(0,0,0,0.2); border: 1px solid rgba(200, 150, 78, 0.2); border-radius: 8px; padding: 20px; margin-bottom: 24px; }
+.insights-box { background: rgba(0,0,0,0.2); border: 1px solid rgba(244, 143, 51, 0.2); border-radius: 8px; padding: 20px; margin-bottom: 24px; }
 .insight-item { margin-bottom: 16px; }
 .insight-item:last-child { margin-bottom: 0; }
 .insight-item h4 { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--white); margin-bottom: 6px; }
@@ -112,7 +119,7 @@ select.text-input option { background: var(--navy); color: white; }
 
 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
 .dot.red { background: var(--error); }
-.dot.gold { background: var(--gold); box-shadow: 0 0 8px rgba(200,150,78,0.5); }
+.dot.gold { background: var(--gold); box-shadow: 0 0 8px rgba(244,143,51,0.5); }
 
 /* Charting */
 .chart-container { flex: 1; display: flex; align-items: flex-end; justify-content: space-around; padding: 20px 0; min-height: 250px; }
@@ -123,8 +130,8 @@ select.text-input option { background: var(--navy); color: white; }
 .bar-track { width: 60px; height: 200px; background: rgba(255,255,255,0.05); border-radius: 6px 6px 0 0; position: relative; border-bottom: 2px solid rgba(255,255,255,0.2); }
 .bar { width: 100%; position: absolute; bottom: 0; border-radius: 4px 4px 0 0; transition: height 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); height: 0%; box-shadow: 0 0 10px rgba(0,0,0,0.2); }
 .current-bar { background: var(--navy-light); border: 2px solid rgba(255,255,255,0.2); border-bottom: none; }
-.added-bar { background: linear-gradient(180deg, var(--gold) 0%, rgba(200,150,78,0.3) 100%); }
-.future-bar { background: linear-gradient(180deg, var(--green-light) 0%, rgba(74,157,86,0.3) 100%); }
+.added-bar { background: linear-gradient(180deg, var(--gold) 0%, rgba(244,143,51,0.3) 100%); }
+.future-bar { background: linear-gradient(180deg, var(--green-light) 0%, rgba(49,118,117,0.3) 100%); }
 .bar-title { margin-top: 12px; font-size: 0.8rem; color: rgba(255,255,255,0.6); font-weight: 500; text-align: center; }
 
 /* Modal */
